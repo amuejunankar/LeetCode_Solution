@@ -1,0 +1,40 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        
+        for ( int i = 0; i < nums.length;i++) {
+            
+            if ( !set.contains(nums[i])) {
+                set.add(nums[i]);
+            } else {
+                set.remove(nums[i]);
+            }
+        }
+        return set.toArray(new Integer[1])[0];
+    }
+}
+
+AND with BitManipulation
+
+int result = 0;
+        //even occurence will nullify
+        for(int i=0;i<nums.length;i++){
+            result ^= nums[i];
+        }
+   return result;
+   
+   explaination :
+   4,1,2,2,1
+   /// >>>>>  in XOR, only one should be True everything else is False
+   
+    1 0 0
+  + 0 0 1  4 + 1
+  = 1 0 1
+  + 0 1 0  
+  = 1 1 1
+  + 0 1 0
+  = 1 0 1
+  + 0 0 1
+  = 1 0 0  >> 4
+ 
+  
